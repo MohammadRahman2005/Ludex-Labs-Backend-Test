@@ -3,4 +3,13 @@ import { Context } from "./context";
 
 export const Query: IQuery<Context> = {
   hello: () => "world",
+  todos: async (_, __, { prisma }) => {
+    const todos = await prisma.todo.findMany(); 
+    return todos.map(todo => ({
+      ...todo,
+      createdAt: todo.createdAt.toISOString(),
+      updatedAt: todo.createdAt.toISOString(),
+
+    }));
+  },
 };

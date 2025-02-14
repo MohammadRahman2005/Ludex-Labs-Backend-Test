@@ -4,7 +4,7 @@ export const typeDefs = /* GraphQL */ `
   }
 
   input CreateTodoInput {
-    title: Strinng!
+    title: String!
   }
 
   type Something {
