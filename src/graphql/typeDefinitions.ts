@@ -3,16 +3,30 @@ export const typeDefs = /* GraphQL */ `
     name: String!
   }
 
+  input CreateTodoInput {
+    title: Strinng!
+  }
+
   type Something {
     id: ID!
     name: String!
   }
 
+  type Todo {
+    id: ID!
+    title: String!
+    completed: Boolean!
+    createdAt: String!
+    updatedAt: String!
+  }
+
   type Mutation {
     createSomething(input: CreateSomethingInput!): Something!
+    createTodo(input: CreateTodoInput!): Todo!
   }
 
   type Query {
     hello: String
+    todos: [Todo!]!
   }
 `;
