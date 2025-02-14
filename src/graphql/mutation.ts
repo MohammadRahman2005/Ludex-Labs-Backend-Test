@@ -1,5 +1,6 @@
 import { type MutationResolvers as IMutation } from "./generated/graphql";
 import { Context } from "./context";
+import { formatInTimeZone } from "date-fns-tz";
 
 export const Mutation: IMutation<Context> = {
   createSomething: async (_, { input }, { prisma }) => {
@@ -26,8 +27,8 @@ export const Mutation: IMutation<Context> = {
       id: todo.id,
       title: todo.title,
       completed: todo.completed,
-      createdAt: todo.createdAt.toISOString(),
-      updatedAt: todo.updatedAt.toISOString(),
+      createdAt: formatInTimeZone(todo.createdAt, "America/New_York", "yyyy-MM-dd HH:mm::ss"),
+      updatedAt: formatInTimeZone(todo.updatedAt, "America/New_York", "yyyy-MM-dd HH:mm::ss"),
     };
   },
   updateTodo: async (_, { input }, { prisma }) => {
@@ -52,8 +53,8 @@ export const Mutation: IMutation<Context> = {
       id: todo.id,
       title: todo.title,
       completed: todo.completed,
-      createdAt: todo.createdAt.toISOString(),
-      updatedAt: todo.updatedAt.toISOString(),
+      createdAt: formatInTimeZone(todo.createdAt, "America/New_York", "yyyy-MM-dd HH:mm::ss"),
+      updatedAt: formatInTimeZone(todo.updatedAt, "America/New_York", "yyyy-MM-dd HH:mm::ss"),
     }
   },
   deleteTodo: async (_, { id }, { prisma }) => {
