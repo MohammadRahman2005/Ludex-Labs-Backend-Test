@@ -30,6 +30,7 @@ export const typeDefs = /* GraphQL */ `
     createSomething(input: CreateSomethingInput!): Something!
     createTodo(input: CreateTodoInput!): Todo!
     updateTodo(input: UpdateTodoInput): Todo!
+    deleteTodo(id: ID!): Boolean!
   }
 
   type Query {
