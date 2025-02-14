@@ -31,6 +31,9 @@ export const Mutation: IMutation<Context> = {
     };
   },
   updateTodo: async (_, { input }, { prisma }) => {
+    if (!input){
+      throw new Error("Input is required")
+    }
     const { id, title, completed } = input;
     const todo = await prisma.todo.update({
       where: { id },
