@@ -35,9 +35,18 @@ export const Mutation: IMutation<Context> = {
       throw new Error("Input is required")
     }
     const { id, title, completed } = input;
+
+    const updatedData: any = {};
+    if (title !== undefined && title !== null) {
+      updatedData.title = title;
+    }
+    if (completed !== undefined && completed !== null) {
+      updatedData.completed = completed;
+    }
+
     const todo = await prisma.todo.update({
       where: { id },
-      data: { title, completed },
+      data: updatedData,
     });
     return {
       id: todo.id,
