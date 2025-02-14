@@ -56,4 +56,8 @@ export const Mutation: IMutation<Context> = {
       updatedAt: todo.updatedAt.toISOString(),
     }
   },
+  deleteTodo: async (_, { id }, { prisma }) => {
+    await prisma.todo.delete({ where: { id } });
+    return true;
+  }
 };
