@@ -20,4 +20,12 @@ export const Query: IQuery<Context> = {
       updatedAt: todo.createdAt.toISOString(),
     }))
   },
+  completedTodos: async (_, __, { prisma }) => {
+    const todos = prisma.todo.findMany({ where: {completed: true}});
+    return (await todos).map(todo => ({
+      ...todo,
+      createdAt: todo.createdAt.toISOString(),
+      updatedAt: todo.createdAt.toISOString(),
+    }))
+  },
 };
