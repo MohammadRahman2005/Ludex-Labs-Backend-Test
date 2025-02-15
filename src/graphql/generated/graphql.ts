@@ -62,8 +62,26 @@ export type Query = {
 };
 
 
+export type QueryCompletedTodosArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+export type QueryIncompleteTodosArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
 export type QueryTodoArgs = {
   id: Scalars['ID']['input'];
+};
+
+
+export type QueryTodosArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
 };
 
 export type Something = {
@@ -162,6 +180,7 @@ export type ResolversTypes = {
   CreateSomethingInput: CreateSomethingInput;
   CreateTodoInput: CreateTodoInput;
   ID: ResolverTypeWrapper<Scalars['ID']['output']>;
+  Int: ResolverTypeWrapper<Scalars['Int']['output']>;
   Mutation: ResolverTypeWrapper<{}>;
   Query: ResolverTypeWrapper<{}>;
   Something: ResolverTypeWrapper<Something>;
@@ -176,6 +195,7 @@ export type ResolversParentTypes = {
   CreateSomethingInput: CreateSomethingInput;
   CreateTodoInput: CreateTodoInput;
   ID: Scalars['ID']['output'];
+  Int: Scalars['Int']['output'];
   Mutation: {};
   Query: {};
   Something: Something;
@@ -192,11 +212,11 @@ export type MutationResolvers<ContextType = any, ParentType extends ResolversPar
 };
 
 export type QueryResolvers<ContextType = any, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = {
-  completedTodos?: Resolver<Array<ResolversTypes['Todo']>, ParentType, ContextType>;
+  completedTodos?: Resolver<Array<ResolversTypes['Todo']>, ParentType, ContextType, Partial<QueryCompletedTodosArgs>>;
   hello?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
-  incompleteTodos?: Resolver<Array<ResolversTypes['Todo']>, ParentType, ContextType>;
+  incompleteTodos?: Resolver<Array<ResolversTypes['Todo']>, ParentType, ContextType, Partial<QueryIncompleteTodosArgs>>;
   todo?: Resolver<Maybe<ResolversTypes['Todo']>, ParentType, ContextType, RequireFields<QueryTodoArgs, 'id'>>;
-  todos?: Resolver<Array<ResolversTypes['Todo']>, ParentType, ContextType>;
+  todos?: Resolver<Array<ResolversTypes['Todo']>, ParentType, ContextType, Partial<QueryTodosArgs>>;
 };
 
 export type SomethingResolvers<ContextType = any, ParentType extends ResolversParentTypes['Something'] = ResolversParentTypes['Something']> = {

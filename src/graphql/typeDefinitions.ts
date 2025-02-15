@@ -35,9 +35,9 @@ export const typeDefs = /* GraphQL */ `
 
   type Query {
     hello: String
-    todos: [Todo!]!
-    incompleteTodos: [Todo!]!
-    completedTodos: [Todo!]!
+    todos(limit: Int, offset: Int): [Todo!]!
+    incompleteTodos(limit: Int, offset: Int): [Todo!]!
+    completedTodos(limit: Int, offset: Int): [Todo!]!
     todo(id: ID!): Todo
   }
 `;
