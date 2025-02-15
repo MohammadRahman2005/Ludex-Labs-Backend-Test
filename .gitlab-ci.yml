@@ -1,0 +1,10 @@
+image: node:lts-bullseye-slim
+
+stages:
+  - test
+  
+test:
+  stage: test
+  script:
+   - npm install
+   - npm run test
