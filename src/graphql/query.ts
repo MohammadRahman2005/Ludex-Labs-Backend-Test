@@ -13,19 +13,28 @@ export const Query: IQuery<Context> = {
     }));
   },
   incompleteTodos: async (_, __, { prisma }) => {
-    const todos = prisma.todo.findMany({ where: {completed: false}});
-    return (await todos).map(todo => ({
+    const todos = await prisma.todo.findMany({ where: {completed: false}});
+    return todos.map(todo => ({
       ...todo,
       createdAt: formatInTimeZone(todo.createdAt, "America/New_York", "yyyy-MM-dd HH:mm::ss"),
       updatedAt: formatInTimeZone(todo.updatedAt, "America/New_York", "yyyy-MM-dd HH:mm::ss"),
     }))
   },
   completedTodos: async (_, __, { prisma }) => {
-    const todos = prisma.todo.findMany({ where: {completed: true}});
-    return (await todos).map(todo => ({
+    const todos = await prisma.todo.findMany({ where: {completed: true}});
+    return todos.map(todo => ({
       ...todo,
       createdAt: formatInTimeZone(todo.createdAt, "America/New_York", "yyyy-MM-dd HH:mm::ss"),
       updatedAt: formatInTimeZone(todo.updatedAt, "America/New_York", "yyyy-MM-dd HH:mm::ss"),
     }))
+  },
+  todo: async(_, { id }, { prisma }) => {
+    const todo = await prisma.todo.findUnique({ where: { id }});
+    if (!todo)  throw new Error("Todo not found");
+    return {
+      ...todo,
+      createdAt: formatInTimeZone(todo.createdAt, "America/New_York", "yyyy-MM-dd HH:mm::ss"),
+      updatedAt: formatInTimeZone(todo.updatedAt, "America/New_York", "yyyy-MM-dd HH:mm::ss"),
+    }
   },
 };

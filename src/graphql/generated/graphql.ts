@@ -57,7 +57,13 @@ export type Query = {
   completedTodos: Array<Todo>;
   hello?: Maybe<Scalars['String']['output']>;
   incompleteTodos: Array<Todo>;
+  todo?: Maybe<Todo>;
   todos: Array<Todo>;
+};
+
+
+export type QueryTodoArgs = {
+  id: Scalars['ID']['input'];
 };
 
 export type Something = {
@@ -189,6 +195,7 @@ export type QueryResolvers<ContextType = any, ParentType extends ResolversParent
   completedTodos?: Resolver<Array<ResolversTypes['Todo']>, ParentType, ContextType>;
   hello?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   incompleteTodos?: Resolver<Array<ResolversTypes['Todo']>, ParentType, ContextType>;
+  todo?: Resolver<Maybe<ResolversTypes['Todo']>, ParentType, ContextType, RequireFields<QueryTodoArgs, 'id'>>;
   todos?: Resolver<Array<ResolversTypes['Todo']>, ParentType, ContextType>;
 };
 
