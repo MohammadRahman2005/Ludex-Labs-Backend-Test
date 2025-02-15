@@ -5,16 +5,20 @@ export const typeDefs = /* GraphQL */ `
 
   input CreateTodoInput {
     title: String!
+    dueDate: String
   }
 
   input UpdateTodoInput {
     id: ID!
     title: String
     completed: Boolean
+    dueDate: String
   }
 
   input TodoFilter {
     completed: Boolean
+    overdue: Boolean
+    upcoming: Boolean
   }
 
   enum SortOrder {
@@ -24,6 +28,7 @@ export const typeDefs = /* GraphQL */ `
 
   input TodoSort {
     createdAt: SortOrder
+    dueDate: SortOrder
   }
 
   type Something {
@@ -37,6 +42,7 @@ export const typeDefs = /* GraphQL */ `
     completed: Boolean!
     createdAt: String!
     updatedAt: String!
+    dueDate: String
   }
 
   type Mutation {

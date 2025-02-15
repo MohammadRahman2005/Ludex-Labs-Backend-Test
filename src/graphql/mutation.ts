@@ -20,6 +20,7 @@ export const Mutation: IMutation<Context> = {
       data: {
         title: input.title,
         completed: false,
+        dueDate: input.dueDate ? new Date(input.dueDate) : null,
       },
     });
 
@@ -29,13 +30,14 @@ export const Mutation: IMutation<Context> = {
       completed: todo.completed,
       createdAt: formatInTimeZone(todo.createdAt, "America/New_York", "yyyy-MM-dd HH:mm::ss"),
       updatedAt: formatInTimeZone(todo.updatedAt, "America/New_York", "yyyy-MM-dd HH:mm::ss"),
+      dueDate: todo.dueDate ? formatInTimeZone(todo.dueDate, "America/New_York", "yyyy-MM-dd HH:mm::ss") : null,
     };
   },
   updateTodo: async (_, { input }, { prisma }) => {
     if (!input){
       throw new Error("Input is required")
     }
-    const { id, title, completed } = input;
+    const { id, title, completed, dueDate } = input;
 
     const updatedData: any = {};
     if (title !== undefined && title !== null) {
@@ -43,6 +45,9 @@ export const Mutation: IMutation<Context> = {
     }
     if (completed !== undefined && completed !== null) {
       updatedData.completed = completed;
+    }
+    if (dueDate !== undefined && dueDate !== null) {
+      updatedData.dueDate = new Date(dueDate);
     }
 
     const todo = await prisma.todo.update({
@@ -55,6 +60,7 @@ export const Mutation: IMutation<Context> = {
       completed: todo.completed,
       createdAt: formatInTimeZone(todo.createdAt, "America/New_York", "yyyy-MM-dd HH:mm::ss"),
       updatedAt: formatInTimeZone(todo.updatedAt, "America/New_York", "yyyy-MM-dd HH:mm::ss"),
+      dueDate: todo.dueDate ? formatInTimeZone(todo.dueDate, "America/New_York", "yyyy-MM-dd HH:mm::ss") : null,
     }
   },
   deleteTodo: async (_, { id }, { prisma }) => {
