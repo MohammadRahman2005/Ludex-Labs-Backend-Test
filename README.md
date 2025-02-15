@@ -90,6 +90,24 @@ query {
 }
 ```
 
+```graphql
+query {
+  todos(
+    sort: { createdAt: DESC }
+    limit: 10
+    offset: 1
+    filter: { upcoming: true }
+  ) {
+    id
+    title
+    completed
+    createdAt
+    updatedAt
+    dueDate
+  }
+}
+```
+
 To run a **mutation**, use:
 
 ```graphql
@@ -97,6 +115,19 @@ mutation {
   createSomething(input: { name: "Bob" }) {
     id
     name
+  }
+}
+```
+
+```graphql
+mutation {
+  createTodo(input: { title: "Buy groceries", dueDate: "2025-02-15T12:00:00Z" }) {
+    id
+    title
+    completed
+    createdAt
+    updatedAt
+    dueDate
   }
 }
 ```
