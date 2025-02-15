@@ -7,7 +7,7 @@
     "prisma:generate": "prisma generate",
     "graphql:generate": "graphql-codegen --config codegen.ts",
     "generate": "npm run prisma:generate && npm run graphql:generate",
-    "test": "mocha -r ts-node/register test/**/*.test.ts"
+    "test": "mocha --recursive"
   },
   "devDependencies": {
     "@graphql-codegen/cli": "5.0.4",
@@ -17,13 +17,15 @@
     "@types/chai-http": "^3.0.5",
     "@types/express": "^5.0.0",
     "@types/mocha": "^10.0.10",
-    "chai": "^5.2.0",
+    "@types/sinon": "^17.0.3",
+    "chai": "^4.3.10",
     "chai-http": "^5.1.1",
     "env-cmd": "^10.1.0",
     "mocha": "^11.1.0",
     "nodemon": "^3.1.9",
     "prisma": "^6.3.1",
     "reflect-metadata": "^0.2.2",
+    "sinon": "^19.0.2",
     "ts-node": "^10.9.2",
     "typescript": "^5.7.3"
   },
