@@ -4,8 +4,12 @@ import { formatInTimeZone } from "date-fns-tz";
 
 export const Query: IQuery<Context> = {
   hello: () => "world",
-  todos: async (_, { limit, offset }, { prisma }) => {
+  todos: async (_, { filter, sort, limit, offset }, { prisma }) => {
+    const whereClause = filter?.completed != null ? { completed: filter.completed } : undefined;
+    const orderByClause = sort?.createdAt ? { createdAt: sort.createdAt?.toLowerCase() as 'asc' | 'desc' }: undefined; 
     const todos = await prisma.todo.findMany({
+      where: whereClause,
+      orderBy: orderByClause,
       skip: offset || 0, // Skip the first offset items (default 0)
       take: limit || 10, // Limit the number of todos retrieved (default 10) 
     }); 

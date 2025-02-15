@@ -13,6 +13,19 @@ export const typeDefs = /* GraphQL */ `
     completed: Boolean
   }
 
+  input TodoFilter {
+    completed: Boolean
+  }
+
+  enum SortOrder {
+    ASC
+    DESC
+  }
+
+  input TodoSort {
+    createdAt: SortOrder
+  }
+
   type Something {
     id: ID!
     name: String!
@@ -35,7 +48,7 @@ export const typeDefs = /* GraphQL */ `
 
   type Query {
     hello: String
-    todos(limit: Int, offset: Int): [Todo!]!
+    todos(filter: TodoFilter, sort: TodoSort, limit: Int, offset: Int): [Todo!]!
     incompleteTodos(limit: Int, offset: Int): [Todo!]!
     completedTodos(limit: Int, offset: Int): [Todo!]!
     todo(id: ID!): Todo

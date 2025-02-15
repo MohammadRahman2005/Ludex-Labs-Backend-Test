@@ -80,8 +80,10 @@ export type QueryTodoArgs = {
 
 
 export type QueryTodosArgs = {
+  filter?: InputMaybe<TodoFilter>;
   limit?: InputMaybe<Scalars['Int']['input']>;
   offset?: InputMaybe<Scalars['Int']['input']>;
+  sort?: InputMaybe<TodoSort>;
 };
 
 export type Something = {
@@ -90,6 +92,11 @@ export type Something = {
   name: Scalars['String']['output'];
 };
 
+export enum SortOrder {
+  Asc = 'ASC',
+  Desc = 'DESC'
+}
+
 export type Todo = {
   __typename?: 'Todo';
   completed: Scalars['Boolean']['output'];
@@ -97,6 +104,14 @@ export type Todo = {
   id: Scalars['ID']['output'];
   title: Scalars['String']['output'];
   updatedAt: Scalars['String']['output'];
+};
+
+export type TodoFilter = {
+  completed?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type TodoSort = {
+  createdAt?: InputMaybe<SortOrder>;
 };
 
 export type UpdateTodoInput = {
@@ -184,8 +199,11 @@ export type ResolversTypes = {
   Mutation: ResolverTypeWrapper<{}>;
   Query: ResolverTypeWrapper<{}>;
   Something: ResolverTypeWrapper<Something>;
+  SortOrder: SortOrder;
   String: ResolverTypeWrapper<Scalars['String']['output']>;
   Todo: ResolverTypeWrapper<Todo>;
+  TodoFilter: TodoFilter;
+  TodoSort: TodoSort;
   UpdateTodoInput: UpdateTodoInput;
 };
 
@@ -201,6 +219,8 @@ export type ResolversParentTypes = {
   Something: Something;
   String: Scalars['String']['output'];
   Todo: Todo;
+  TodoFilter: TodoFilter;
+  TodoSort: TodoSort;
   UpdateTodoInput: UpdateTodoInput;
 };
 
