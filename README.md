@@ -107,44 +107,44 @@ The response from the backend will appear on the right-hand side of the UI.
 
 Your task is to implement a **CRUD (Create, Read, Update, Delete) Todo backend** using GraphQL. The backend should support the following functionalities:
 
-- Create todos
-- Mark todos as complete or incomplete
-- Update the title of a todo
-- Retrieve all todos
-- Retrieve all incomplete todos
-- Retrieve all completed todos
-- Retrieve a single todo by ID
-- Delete todos
+- Create todos [✓]
+- Mark todos as complete or incomplete [✓]
+- Update the title of a todo [✓]
+- Retrieve all todos [✓]
+- Retrieve all incomplete todos [✓]
+- Retrieve all completed todos [✓]
+- Retrieve a single todo by ID [✓]
+- Delete todos [✓]
 
 ## **Technical Requirements**
 
 To successfully complete this test, ensure that your implementation meets the following requirements:
 
-- **Use TypeScript:** Your project should be fully typed, and TypeScript configurations should be properly set up.
-- **Use Prisma as ORM:** The database interactions should be handled using Prisma.
-- **GraphQL API Implementation:** The API should be implemented using GraphQL with appropriate queries and mutations.
-- **Follow Best Practices:** Code should be well-structured, modular, and follow standard best practices (e.g. error handling, and meaningful variable names).
+- **Use TypeScript:** Your project should be fully typed, and TypeScript configurations should be properly set up. [✓]
+- **Use Prisma as ORM:** The database interactions should be handled using Prisma. [✓]
+- **GraphQL API Implementation:** The API should be implemented using GraphQL with appropriate queries and mutations. [✓]
+- **Follow Best Practices:** Code should be well-structured, modular, and follow standard best practices (e.g. error handling, and meaningful variable names). [✓]
 - **Database Schema:** The `Todo` entity should have at least the following fields:
   - `id` (UUID)
   - `title` (string)
   - `completed` (boolean)
   - `createdAt` (timestamp)
-  - `updatedAt` (timestamp)
-- **Environment Variables:** Use an `.env` file to configure database connections securely.
-- **Linting & Formatting:** Ensure that your code is properly formatted using ESLint and Prettier.
+  - `updatedAt` (timestamp) [✓]
+- **Environment Variables:** Use an `.env` file to configure database connections securely. [✓]
+- **Linting & Formatting:** Ensure that your code is properly formatted using ESLint and Prettier. [✓]
 - **Validations & Error Handling:**
   - Validate user inputs before processing mutations.
-  - Handle potential errors, such as trying to update a non-existent todo.
-- **Version Control:** Use Git for version control with clear commit messages.
+  - Handle potential errors, such as trying to update a non-existent todo. [✓]
+- **Version Control:** Use Git for version control with clear commit messages. [✓]
 
 ## **Bonus Features (Optional)**
 
 These additional features are not required but will help your submission stand out:
 
-- **Pagination:** Implement pagination for retrieving todos.
-- **Filtering & Sorting:** Allow filtering by `completed` status and sorting by `createdAt`.
-- **(MEDIUM-HARD) Due Date:** Add a `dueDate` field to todos. Implement filtering for **overdue/upcoming** tasks and sort todos by time.
-- **(HARD) Testing:** Write unit and integration tests using Mocha to ensure the API functions correctly.
+- **Pagination:** Implement pagination for retrieving todos. [✓]
+- **Filtering & Sorting:** Allow filtering by `completed` status and sorting by `createdAt`. [✓]
+- **(MEDIUM-HARD) Due Date:** Add a `dueDate` field to todos. Implement filtering for **overdue/upcoming** tasks and sort todos by time. [✓]
+- **(HARD) Testing:** Write unit and integration tests using Mocha to ensure the API functions correctly. [X]
 
 ## **Relevant Documentation**
 
