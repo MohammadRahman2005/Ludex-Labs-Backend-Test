@@ -4,7 +4,8 @@ import { PrismaClient } from "@prisma/client"
 
 const prisma = new PrismaClient();
 
-// Another alternative would be to mock the db
+// A better alternative would be to mock the database using sinon instead of interacting directly with it (this is impractical)
+// After numerous attempts at sinon, I was not able to mock the primsa db
 describe("Unit Tests: Mutation", () => {
     it("should create a new todo and then delete it afterwards", async () => {
         const input = { title: "Testing Todo", dueDate: "2025-02-15T00:00:00Z" };
